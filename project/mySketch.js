@@ -2,6 +2,10 @@ let headline = "Query of Great Import"
 let surveyquestion = "What is thy favorite song?"
 let myFont;
 let contents = "";
+let buttonSavePost
+let textBox;
+let buttonPrintPosts
+let theanswers = []
 
 function preload(){
   myFont = loadFont("CloisterBlack.ttf")
@@ -9,21 +13,45 @@ function preload(){
 
 function setup() {
   createCanvas(1000, 800);
+  buttonSavePost = createButton("Save Post")
+  buttonSavePost.position(20,120)
+  buttonSavePost.mousePressed(saveAnswer)
+
+  buttonPrintPosts = createButton("Show Replies")
+  buttonPrintPosts.position(100,120)
+  buttonPrintPosts.mousePressed(showText)
+
+  textBox = createInput("answer goes here")
+  textBox.size(300,40)
+  textBox.position(25,150)
+  textBox.input(storeText)
+
 }
 
 function draw() {
-  background("white");
   fill("black");
   textSize(25)
   textFont(myFont)
   text(headline, 25, 75)
   SurveyQuery(25,100)
-  fill("black");
-  textSize(20)
-  textFont(myFont)
-  text(contents, 25,150,200,600)
+}
+function saveAnswer(){
+  theanswers.push(contents)
+  contents = "";
+  textBox.value("type your answer here")
+  print(theanswers)
 }
 
+function showText(){
+  let specificY = 300
+  for (let n = 0; n<theanswers.length; n++){
+    textSize(20)
+    textFont(myFont)
+    text(theanswers[n],25,specificY);
+    specificY +=50
+  }
+
+}
 function SurveyQuery(x,y){
   fill("black")
   textSize(20)
@@ -31,6 +59,6 @@ function SurveyQuery(x,y){
   text(surveyquestion, x, y)
 }
 
-function keyTyped() {
-  contents = contents + key;
+function storeText() {
+  contents = this.value()
 }
