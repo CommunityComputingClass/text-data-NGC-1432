@@ -5,10 +5,7 @@ let contents = "";
 let buttonSavePost
 let textBox;
 let buttonPrintPosts
-let theanswers = ["Everybody Wants To Rule The World - Tears for Fears","Gangsta's Paradise - Coolio","Darwin Derby - Vulfpeck","360 - Charli XCX",
-  "Can't Touch This - MC Hammer","All The Stars - Kendrick Lamar\, SZA","Mighty Wings - Cheap Trick","When Doves Cry - Prince",
-  "Make Me Feel - Janelle Monae","Red Wine Supernova - Chappell Roan","Make You Mine - Madison Beer",
-  "She Calls Me Daddy - King Mala","After Midnight - Chappell Roan","Wade In The Water - Unknown"]
+let theanswers = []
 
 function preload(){
   myFont = loadFont("CloisterBlack.ttf")
